@@ -3,6 +3,8 @@ package org.example;
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentResponse;
 
+import java.util.Objects;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -12,6 +14,9 @@ public class Main {
                             "gemini-2.5-flash",
                             "Add postgres support to program at /home/sergeyk/IdeaProjects.tutorial/Test2/GeminiTest2/src/main/java/org/example/Main.java",
                             null);
+            if (Objects.requireNonNull(response.text()).length() > 1024) {
+                System.out.println("The result if too big");
+            }
             System.out.println(response.text());
         }
     }
